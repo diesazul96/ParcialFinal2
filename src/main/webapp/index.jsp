@@ -14,31 +14,12 @@ body {
  
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crunchify JSP Servlet Example</title>
+<title>PARCIALITO FINAL</title>
 </head>
 <body>
-    <div align="center" style="margin-top: 50px;">
-        <form action="CrunchifyServlet">
-           Id Depto:  <input type="text" name="id" size="20px"> <br>
-           Nombre Depto:  <input type="text" name="nombre" size="20px"> <br><br>
-        <input type="submit" value="submit">
-        </form>
-     </div>
- 
-    <%
-       if( request.getAttribute("departamentos")!=null){
-          List<Departamento> departamentos  = (List<Departamento>)request.getAttribute("departamentos");
-           for (Departamento departamento : departamentos) {
-         %>      
-         <h1> <%=departamento.getNom_departamento()%> </h1><br/> 
-         <%      
-          }
-       }
-      
     
-    %>
     <img src="ChartServlet" /><br/>
-    Descargar Excel <a href="HSSFCreate">Descargar</a> 
+    <img src="BarServlet" /><br/>
     
 </body>
 </html>

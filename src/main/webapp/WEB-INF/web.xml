@@ -20,12 +20,12 @@
     
     <servlet>
         <servlet-name>ChartServlet</servlet-name>
-        <servlet-class>com.crunchify.jsp.servlet.ChartServlet</servlet-class>
+        <servlet-class>graficar.ChartServlet</servlet-class>
     </servlet>
        
      <servlet>
         <servlet-name>BarServlet</servlet-name>
-        <servlet-class>com.crunchify.jsp.servlet.BarServlet</servlet-class>
+        <servlet-class>graficar.BarServlet</servlet-class>
     </servlet>
     
     <servlet>

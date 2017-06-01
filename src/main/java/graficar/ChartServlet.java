@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crunchify.jsp.servlet;
+package graficar;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -28,6 +28,9 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
+import dao.ColmenitaDAO;
+import java.util.ArrayList;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class ChartServlet extends HttpServlet {
 
@@ -43,41 +46,31 @@ public class ChartServlet extends HttpServlet {
 
 	}
 
-	public JFreeChart getChart() {
-		
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(25.0, "Series 1", "Category 1");   
-        dataset.addValue(34.0, "Series 1", "Category 2");   
-        dataset.addValue(19.0, "Series 2", "Category 1");   
-        dataset.addValue(29.0, "Series 2", "Category 2");   
-        dataset.addValue(41.0, "Series 3", "Category 1");   
-        dataset.addValue(33.0, "Series 3", "Category 2");   
-
-		
-        JFreeChart chart = ChartFactory.createBarChart3D(
-            "3D Bar Chart Demo",      // chart title
-            "Category",               // domain axis label
-            "Value",                  // range axis label
-            dataset,                  // data
-            PlotOrientation.VERTICAL, // orientation
-            true,                     // include legend
-            true,                     // tooltips
-            false                     // urls
-        );
-
-        CategoryPlot plot = chart.getCategoryPlot();
-        CategoryAxis axis = plot.getDomainAxis();
-        axis.setCategoryLabelPositions(
-            CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 8.0)
-        );
+    public JFreeChart getChart() {
         
-        CategoryItemRenderer renderer = plot.getRenderer();
-        renderer.setItemLabelsVisible(true);
-        BarRenderer r = (BarRenderer) renderer;
-        r.setMaximumBarWidth(0.05);
-        return chart;
-
+        boolean legend = true;
+        boolean tooltips = false;
+        boolean urls = false;
 		
-	}
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        
+        ColmenitaDAO colmena = new ColmenitaDAO();
+        int alimento  = colmena.alimento();
+        int total = 10;
+            
+        double conAlimento  = (alimento * 100) / total;
+        double sinAlimento  = 100 - conAlimento;    
+            
+        dataset.setValue("Con Alimento",conAlimento);
+        dataset.setValue("Sin Alimento",sinAlimento);
+        
+        JFreeChart chart = ChartFactory.createPieChart("Primero", dataset, legend, tooltips, urls);
+        
+        chart.setBorderPaint(Color.GREEN);
+        chart.setBorderStroke(new BasicStroke(5.0f));
+        chart.setBorderVisible(true);
+        
+        return chart;
+    }
 
 }

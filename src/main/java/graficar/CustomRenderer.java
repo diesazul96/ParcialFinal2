@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crunchify.jsp.servlet;
+package graficar;
 
 import java.awt.Paint;
 import org.jfree.chart.renderer.category.BarRenderer;

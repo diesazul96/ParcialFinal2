@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crunchify.jsp.servlet;
+package graficar;
 
 
 import java.awt.Color;
@@ -26,6 +26,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
+import dao.ColmenitaDAO;
+import java.util.ArrayList;
 
 public class BarServlet extends HttpServlet {
 
@@ -41,16 +43,16 @@ public class BarServlet extends HttpServlet {
 
 	}
 
-	public JFreeChart getChart() {
+    public JFreeChart getChart() {
 		
-        
+        ColmenitaDAO colmena = new ColmenitaDAO();
+        ArrayList info = colmena.kilosMiel();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(15, "1", "451");
-        dataset.addValue(12, "1", "851");
-        dataset.addValue(10, "2", "362");
-        dataset.addValue(5,  "2",  "142"); 
+        for (int i = 0; i < info.size(); i+=2) {
+            dataset.addValue((Double) info.get(i+1), "1", "Colmena #"+info.get(i));
+        }
         
- JFreeChart chart = ChartFactory.createBarChart(
+        JFreeChart chart = ChartFactory.createBarChart(
             "Bar Chart Demo 3",       // chart title
             "Category",               // domain axis label
             "Value",                  // range axis label
@@ -88,6 +90,6 @@ public class BarServlet extends HttpServlet {
 
         return chart;
 		
-	}
+    }
 
 }
