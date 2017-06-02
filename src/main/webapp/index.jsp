@@ -31,8 +31,5 @@ body {
         <input type="submit" value="GRAFICO COSTOS"/>
     </form>
     
-    <img src="ChartServlet" /><br/>
-    <img src="BarServlet" /><br/>
-    
 </body>
 </html>

@@ -57,7 +57,7 @@ public class BarServlet extends HttpServlet {
         ArrayList info = catalog.totalCost();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < info.size(); i+=2) {
-            dataset.addValue((Double) info.get(i+1), "1", "Catalog #"+info.get(i));
+            dataset.addValue((Double) info.get(i+1), "1", "Catalog 1");
         }
         
         JFreeChart chart = ChartFactory.createBarChart(
