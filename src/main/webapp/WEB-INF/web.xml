@@ -22,6 +22,11 @@
         <servlet-name>ChartServlet</servlet-name>
         <servlet-class>graficar.ChartServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>NuevoCatalogServlet</servlet-name>
+        <servlet-class>graficar.NuevoCatalogServlet</servlet-class>
+    </servlet>
        
      <servlet>
         <servlet-name>BarServlet</servlet-name>

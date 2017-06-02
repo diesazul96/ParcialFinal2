@@ -26,8 +26,11 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
-import dao.ColmenitaDAO;
+import dao.CatalogDAO;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BarServlet extends HttpServlet {
 
@@ -36,20 +39,25 @@ public class BarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         	response.setContentType("image/png");
 		OutputStream outputStream = response.getOutputStream();
-		JFreeChart chart = getChart();
+		JFreeChart chart = null;
+            try {
+                chart = getChart();
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(BarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		int width = 500;
 		int height = 350;
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
 
 	}
 
-    public JFreeChart getChart() {
+    public JFreeChart getChart() throws URISyntaxException {
 		
-        ColmenitaDAO colmena = new ColmenitaDAO();
-        ArrayList info = colmena.kilosMiel();
+        CatalogDAO catalog = new CatalogDAO();
+        ArrayList info = catalog.totalCost();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < info.size(); i+=2) {
-            dataset.addValue((Double) info.get(i+1), "1", "Colmena #"+info.get(i));
+            dataset.addValue((Double) info.get(i+1), "1", "Catalog #"+info.get(i));
         }
         
         JFreeChart chart = ChartFactory.createBarChart(
