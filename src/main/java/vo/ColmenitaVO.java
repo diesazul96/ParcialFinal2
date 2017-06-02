@@ -10,6 +10,15 @@ public class ColmenitaVO {
     private int pAlimento;
     private int pCria;
     private int pVacios;
+    private int kilosMiel;
+
+    public int getKilosMiel() {
+        return kilosMiel;
+    }
+
+    public void setKilosMiel(int kilosMiel) {
+        this.kilosMiel = kilosMiel;
+    }
 
     public int getId() {
         return id;
