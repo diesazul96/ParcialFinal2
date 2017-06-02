@@ -27,6 +27,11 @@
         <servlet-name>NuevoCatalogServlet</servlet-name>
         <servlet-class>graficar.NuevoCatalogServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>GraficoServlet</servlet-name>
+        <servlet-class>graficar.GraficoServlet</servlet-class>
+    </servlet>
        
      <servlet>
         <servlet-name>BarServlet</servlet-name>
@@ -48,6 +53,16 @@
      <servlet-mapping>
         <servlet-name>ChartServlet</servlet-name>
         <url-pattern>/ChartServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>NuevoCatalogServlet</servlet-name>
+        <url-pattern>/NuevoCatalogServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>GraficoServlet</servlet-name>
+        <url-pattern>/GraficoServlet</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
