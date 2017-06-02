@@ -16,6 +16,20 @@ body {
 <title>PARCIALITO FINAL</title>
 </head>
 <body>
+    <form action="NuevoCatalogServlet" method="GET" id="anadir">
+        <tr>
+            <td>
+                Suplier ID: <input type="text" name="sID"><br><br>
+                Product ID: <input type="text" name="pID"><br><br>
+                Cost: <input type="number" name="cost"><br><br>
+                <input type="submit" value="Añadir Catalogo"/>
+            </td>
+        </tr>
+    </form>
+    
+    <form action="GraficoServlet" method="GET">
+        <input type="submit" value="GRAFICO COSTOS"/>
+    </form>
     
     <img src="ChartServlet" /><br/>
     <img src="BarServlet" /><br/>
