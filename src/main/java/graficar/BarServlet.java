@@ -57,7 +57,7 @@ public class BarServlet extends HttpServlet {
         ArrayList info = catalog.totalCost();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < info.size(); i+=2) {
-            dataset.addValue((Double) info.get(i+1), "1", "Catalog 1");
+            dataset.addValue((Double) info.get(i+1), "1", "Catalog "+info.get(i));
         }
         
         JFreeChart chart = ChartFactory.createBarChart(
@@ -83,11 +83,11 @@ public class BarServlet extends HttpServlet {
                 Color.magenta, Color.blue}
         );
 
-        renderer.setItemLabelsVisible(true);
+        renderer.setBaseItemLabelsVisible(true);
         ItemLabelPosition p = new ItemLabelPosition(
             ItemLabelAnchor.CENTER, TextAnchor.CENTER, TextAnchor.CENTER, 45.0
         );
-        renderer.setPositiveItemLabelPosition(p);
+        renderer.setBasePositiveItemLabelPosition(p);
         plot.setRenderer(renderer);
 
         // change the margin at the top of the range axis...
